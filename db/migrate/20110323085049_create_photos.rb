@@ -1,7 +1,7 @@
 class CreatePhotos < ActiveRecord::Migration
   def self.up
     create_table :photos do |t|
-      t.references :album_id
+      t.integer :album_id
       t.string :photo_file_name
       t.string :photo_content_type
       t.integer :photo_file_size
