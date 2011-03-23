@@ -1,4 +1,6 @@
 FasttrackCaseStudy::Application.routes.draw do
+  get "albums/index"
+
   root :to => "home#index"
 
   devise_for :users
