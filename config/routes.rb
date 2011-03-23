@@ -1,4 +1,6 @@
 FasttrackCaseStudy::Application.routes.draw do
+  get "shares/index"
+
   get "albums/index"
 
   root :to => "home#index"
