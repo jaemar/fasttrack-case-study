@@ -1,5 +1,8 @@
 FasttrackCaseStudy::Application.routes.draw do
+
   get "photos/index"
+
+  get "shares/index"
 
   get "albums/index"
 
