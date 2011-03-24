@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.find_all_by_enabled(true)
+    @albums = Album.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -59,13 +59,31 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def destroy
+  def enable
     @album = Album.find(params[:id])
-    @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to(albums_url) }
-      format.xml  { head :ok }
+      if @album.update_attributes(:enabled => true)
+        format.html { redirect_to(:action => 'index') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @album.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def disable
+    @album = Album.find(params[:id])
+
+    respond_to do |format|
+      if @album.update_attributes(:enabled => false)
+        format.html { redirect_to(:action => 'index') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @album.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
