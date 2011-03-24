@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_filter :authenticate_user!
+  
   def index
     @albums = Album.paginate :page => params[:page], :per_page => 5, :conditions => ['enabled = ? AND user_id = ?', true, current_user.id]
     @photo = @albums

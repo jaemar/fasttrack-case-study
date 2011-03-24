@@ -1,0 +1,7 @@
+<tr>
+  <td><%= new_photos.id %></td>
+  <td><%= image_tag new_photos.photo.url(:thumb) %></td>
+  <td><%= new_photos.album.user.username %></td>
+  <td><%= new_photos.album.name %></td>
+  <td><%= new_photos.created_at %></td>
+</tr>

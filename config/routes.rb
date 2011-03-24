@@ -22,4 +22,6 @@ FasttrackCaseStudy::Application.routes.draw do
   match "home/search" => "home#search", :via => :get, :as => "search"
 
   match "invitations/:id" => "invitations#invite", :via => :post, :as => "invite"
+
+  match "admin" => "administrators#index", :via => :get
 end
