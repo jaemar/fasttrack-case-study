@@ -11,6 +11,7 @@ class AlbumsController < ApplicationController
   def show
     @album = Album.find(params[:id])
     @photo = Photo.new
+    @photos = Photo.find_all_by_album_id(params[:id])
 
     unless @album.enabled
       redirect_to root_path

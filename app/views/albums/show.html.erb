@@ -1,3 +1,5 @@
 <h1><%= @album.name %></h1>
 
-<%= render :partial => 'photo_upload', :locals => {:photo => @photo} %>
+<% if (@album.user_id == current_user.id) && (@photos.count < 100) %>
+  <%= render :partial => 'photo_upload', :locals => {:photo => @photo} %>
+<% end %>
