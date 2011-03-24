@@ -1,15 +1,5 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @album.name %></h1>
 
-<p>
-  <b>Name:</b>
-  <%= @customer.name %>
-</p>
-
-<!-- <p>
-  <b>Active:</b>
-  <%= @customer.active %>
-</p> -->
-
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<% if (@album.user_id == current_user.id) && (@photos.count < 100) %>
+  <%= render :partial => 'photo_upload', :locals => {:photo => @photo, :album => @album} %>
+<% end %>
