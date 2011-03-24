@@ -60,21 +60,7 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def enable
-    @album = Album.find(params[:id])
-
-    respond_to do |format|
-      if @album.update_attributes(:enabled => true)
-        format.html { redirect_to(:action => 'index') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @album.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  def disable
+  def delete
     @album = Album.find(params[:id])
 
     respond_to do |format|

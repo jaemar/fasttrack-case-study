@@ -10,17 +10,15 @@
   </tr>
 
 <% @albums.each do |album| %>
+  <% if album.enabled %>
   <tr>
     <td><%= album.name %></td>
     <td><%= album.enabled %></td>
     <td><%= link_to 'Show', album %></td>
     <td><%= link_to 'Edit', edit_album_path(album) %></td>
-    <% if album.enabled %>
-    <td><%= link_to 'Disable', disable_path(album.id), :method => :get %></td>
-    <% else %>
-    <td><%= link_to 'Enable', enable_path(album.id),  :method => :get %></td>
-    <% end %>
+    <td><%= link_to 'Destroy', delete_path(album.id), :method => :get %></td>
   </tr>
+  <% end %>
 <% end %>
 </table>
 
