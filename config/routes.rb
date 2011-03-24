@@ -6,6 +6,7 @@ FasttrackCaseStudy::Application.routes.draw do
 
   resources :albums do
     resource :photos
+    resources :shares
   end
 
   root :to => "home#index"

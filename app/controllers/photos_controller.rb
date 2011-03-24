@@ -21,7 +21,8 @@ class PhotosController < ApplicationController
       flash[:notice] = "Photo uploaded."
       redirect_to @album
     else
-      redirect_to root_path
+      flash[:alert] = "Photo cannot be uploaded."
+      redirect_to @album
     end
   end
 
