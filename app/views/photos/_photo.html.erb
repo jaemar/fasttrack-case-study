@@ -1,1 +1,3 @@
-<td><%= image_tag photo.photo.url(:medium) %></td>
+<td><%= image_tag photo.photo.url(:medium) %><br />
+  <%= link_to "Move to another album", move_photo_path(:id => photo.id) %>
+</td>
