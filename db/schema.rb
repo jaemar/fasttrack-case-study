@@ -10,12 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323085049) do
+ActiveRecord::Schema.define(:version => 20110324091152) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
     t.boolean  "enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "invited_user_id"
+    t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

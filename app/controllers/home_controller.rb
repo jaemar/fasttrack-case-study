@@ -9,5 +9,6 @@ class HomeController < ApplicationController
   def search
     @like = "%".concat(params[:name]).concat('%')
     @user = User.find(:all, :conditions => ['username LIKE ?  OR email LIKE ?', @like, @like ] )
+    @invitations = Invitation.find(:all, :conditions => ['user_id = ?', current_user.id])
   end
 end
