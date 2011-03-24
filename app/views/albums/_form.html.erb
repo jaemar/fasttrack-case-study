@@ -16,8 +16,13 @@
     <%= f.text_field :name %>
   </div>
 
-  <%= f.hidden_field :user_id, :valud => current_user.id %>
-  <%= f.hidden_field :user_id, :valud => current_user.id %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <% if @album.enabled %>
+    <%= f.hidden_field :enabled, :value => true %>
+  <% else %>
+    <%= f.hidden_field :enabled, :value => @album.enabled %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>

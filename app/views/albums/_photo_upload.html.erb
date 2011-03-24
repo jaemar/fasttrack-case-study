@@ -1,0 +1,5 @@
+<%= form_for photo, :html => {:multipart => true}, :url => album_photos_path(album) do |f| %>
+  <%= f.label :photo, "Upload Photo" %>
+  <%= f.file_field :photo %><br/>
+  <%= f.submit "Upload" %>
+<% end %>
