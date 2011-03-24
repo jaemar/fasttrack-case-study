@@ -3,7 +3,7 @@ class CreateAlbums < ActiveRecord::Migration
     create_table :albums do |t|
       t.string :name
       t.references :user
-      t.boolean :enabled
+      t.boolean :enabled, :default => 1
 
       t.timestamps
     end
