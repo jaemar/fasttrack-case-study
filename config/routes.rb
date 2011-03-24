@@ -10,6 +10,8 @@ FasttrackCaseStudy::Application.routes.draw do
 
   devise_for :users
 
+  match 'photos/create' => 'photos#create', :via => :post, :as => 'photos'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
