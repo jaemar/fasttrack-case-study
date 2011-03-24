@@ -1,1 +1,4 @@
-<div class="uploaded_photo"><%= image_tag photo.photo.url(:medium) %></div>
+<div class="uploaded_photo">
+  <%= image_tag photo.photo.url(:medium) %><br />
+  <%= link_to "Move to another album", move_photo_path(:id => photo.id) %>
+</div>

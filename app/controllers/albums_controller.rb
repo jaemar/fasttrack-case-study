@@ -16,6 +16,7 @@ class AlbumsController < ApplicationController
     unless @album.enabled
       redirect_to root_path
     end
+
   end
 
    def new
