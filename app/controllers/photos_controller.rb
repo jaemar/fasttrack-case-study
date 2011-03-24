@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  before_filter :authenticate_user!
+  
   def index
     @photo = Photo.find(params[:id])
   end

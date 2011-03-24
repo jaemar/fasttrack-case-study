@@ -18,4 +18,6 @@ FasttrackCaseStudy::Application.routes.draw do
   match 'photo/:id/move' => 'photos#index', :via => :get, :as => 'move_photo'
 
   match "home/search" => "home#search", :via => :get, :as => "search"
+
+  match "admin" => "administrators#index", :via => :get
 end

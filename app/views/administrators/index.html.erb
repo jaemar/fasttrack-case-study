@@ -1,0 +1,54 @@
+<h1>Welcome Superuser</h1>
+
+<table>
+  <tr>
+    <td colspan="4">LIST OF USERS</td>
+  </tr>
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Email Address</th>
+    <th>Created</th>
+  </tr>
+  <%= render :partial => 'all_users', :collection => @users %>
+</table>
+
+<table>
+  <tr>
+    <td colspan="4">LIST OF ALBUMS</td>
+  </tr>
+  <tr>
+    <th>ID</th>
+    <th>Album Owner</th>
+    <th>Album Name</th>
+    <th>Created</th>
+  </tr>
+  <%= render :partial => 'all_albums', :collection => @albums %>
+</table>
+
+<table>
+  <tr>
+    <td colspan="4">LIST OF USERS WHO REGISTERED TODAY</td>
+  </tr>
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Email Address</th>
+    <th>Created</th>
+  </tr>
+  <%= render :partial => 'all_users', :collection => @registered_users_today %>
+</table>
+
+<table>
+  <tr>
+    <td colspan="4">LIST OF PHOTOS UPLOADED TODAY</td>
+  </tr>
+  <tr>
+    <th>ID</th>
+    <th>Photo</th>
+    <th>From User</th>
+    <th>From Album</th>
+    <th>Uploaded</th>
+  </tr>
+  <%= render :partial => 'new_photos', :collection => @uploaded_photos_today %>
+</table>
