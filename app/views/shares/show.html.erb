@@ -35,11 +35,11 @@
     <th></th>
     <th></th>
   </tr>
-<% unless @shares.empty? %>
-<% @shares.each do |s| %>
-  <tr>
-    <td><%= s.username %></td>
-  </tr>
-<% end %>
-<% end %>
+  <% @album.users.each do |user| %>
+    <tr>
+      <td><%= user.username%></td>
+      <td><%= user.id%></td>
+      <td><%= link_to 'Unshare', album_shares_path(:user_id => user.id), :method => :delete %></td>
+    </tr>
+  <% end %>
 </table>
