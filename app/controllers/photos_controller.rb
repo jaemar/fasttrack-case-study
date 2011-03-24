@@ -1,5 +1,16 @@
 class PhotosController < ApplicationController
   def index
+    @photo = Photo.find(params[:id])
+  end
+
+  def move
+    @photo = Photo.find(params[:id])
+
+    if @photo.update_attributes(params[:photo])
+      redirect_to albums_path
+    else
+      render :index
+    end
   end
 
   def create
@@ -10,7 +21,8 @@ class PhotosController < ApplicationController
       flash[:notice] = "Photo uploaded."
       redirect_to @album
     else
-      redirect_to root_path
+      flash[:alert] = "Photo cannot be uploaded."
+      redirect_to @album
     end
   end
 

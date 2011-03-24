@@ -11,11 +11,12 @@ class AlbumsController < ApplicationController
   def show
     @album = Album.find(params[:id])
     @photo = Photo.new
-    @photos = Photo.find_all_by_album_id(params[:id])
+    @photos = Photo.paginate :page => params[:page], :per_page => 10, :conditions => ["album_id = ?", params[:id]]
 
     unless @album.enabled
       redirect_to root_path
     end
+
   end
 
    def new
@@ -59,21 +60,7 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def enable
-    @album = Album.find(params[:id])
-
-    respond_to do |format|
-      if @album.update_attributes(:enabled => true)
-        format.html { redirect_to(:action => 'index') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @album.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  def disable
+  def delete
     @album = Album.find(params[:id])
 
     respond_to do |format|

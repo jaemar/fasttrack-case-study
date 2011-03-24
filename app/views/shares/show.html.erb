@@ -1,0 +1,45 @@
+<h1>Share Album </h1>
+
+<%= form_for([@album, @share], album_shares_path(:id => @album.id)) do |f| %>
+<% if @share.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@share.errors.count, "error") %> prohibited from sharing:</h2>
+  <ul>
+      <% @share.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+<% end %>
+  </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <label>Album</label><br />
+    <%= @album.name %>
+  </div>
+  <div class="field">
+    <label>Input User ID here</label><br />
+    <%= f.text_field :user_id %>
+    <%= f.hidden_field :album_id, :value => @album.id %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Share" %>
+  </div>
+<% end %>
+
+<h2>Shared albums with:</h2>
+<table>
+  <tr>
+    <th>Username</th>
+    <th>User ID</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% unless @shares.empty? %>
+<% @shares.each do |s| %>
+  <tr>
+    <td><%= s.username %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>

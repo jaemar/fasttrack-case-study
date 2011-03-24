@@ -11,6 +11,13 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
+<p>
+  <%= link_to 'Home', root_path %> |
+  <%= link_to 'My Album', albums_path %> |
+  <%= 'Shared Album' %> |
+  <%= link_to 'Logout', destroy_user_session_path %>
+</p>
+
 <%= form_tag(search_path, {:method => :get} ) do %>
   <%= label_tag("name", "Search user:") %>
   <%= text_field_tag("name") %>
@@ -18,8 +25,6 @@
 <% end %>
 
 <%= yield %>
-
-<p><%= link_to 'Logout', destroy_user_session_path %></p>
 
 </body>
 </html>
