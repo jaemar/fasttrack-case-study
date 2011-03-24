@@ -2,14 +2,19 @@
 
 <p>
   <b>Name:</b>
-  <%= @customer.name %>
+  <%= @album.name %>
 </p>
 
-<!-- <p>
-  <b>Active:</b>
-  <%= @customer.active %>
-</p> -->
+<%= image_tag "/images/cute.jpeg" %>
+<p>
+<%= link_to "Move to other album", move_photo_path  %>
+</p>
+<%= image_tag "/images/starbucks.jpg", :size => "220x220" %>
+<p>
+<%= link_to "Move to other album", move_photo_path  %>
+</p>
 
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<p>
+<%= link_to 'Edit', edit_album_path(@customer) %> |
+<%= link_to 'Back', albums_path %>
+</p>

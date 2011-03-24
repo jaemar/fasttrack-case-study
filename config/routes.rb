@@ -5,6 +5,7 @@ FasttrackCaseStudy::Application.routes.draw do
   get "shares/index"
 
   resources :albums
+  resources :photos
 
   root :to => "home#index"
 
@@ -66,4 +67,6 @@ FasttrackCaseStudy::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  match 'photo/:id' => 'photos#move', :via => :put, :as => 'update_move_photo'
+  match 'photo/:id/move' => 'photos#index', :via => :get, :as => 'move_photo'
 end

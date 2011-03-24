@@ -11,16 +11,16 @@ class AlbumsController < ApplicationController
   def show
     @album = Album.find(params[:id])
 
-    if @album.active?
-      respond_to do |format|
-        format.html # show.html.erb
-        format.xml  { render :xml => @album }
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to album_url, :notice => "Record does not exist" }
-      end
-    end
+    #if @album.active?
+    #  respond_to do |format|
+    #    format.html # show.html.erb
+    #    format.xml  { render :xml => @album }
+    #  end
+    #else
+    #  respond_to do |format|
+    #    format.html { redirect_to album_url, :notice => "Record does not exist" }
+    #  end
+    #end
   end
 
    def new
