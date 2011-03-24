@@ -12,6 +12,8 @@ FasttrackCaseStudy::Application.routes.draw do
 
   match "albums/:id/enable" => "albums#enable", :via => :get, :as => 'enable'
   match "albums/:id/disable" => "albums#disable", :via => :get, :as => 'disable'
+
+  match "home/search" => "home#search", :via => :get, :as => "search"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
