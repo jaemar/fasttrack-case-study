@@ -1,5 +1,6 @@
 <h1>Hi <%= current_user.username %>!</h1>
 
+<h2> My Album</h2>
 <% @albums.each do |album| %>
   <div style="float: left; width: 150px; text-align: center; border: 1px solid #000;">
     <% if latest_photo(album.id) %>
@@ -21,16 +22,21 @@
 <%= will_paginate @albums %>
 <div>
 
+<h2> Shared Album</h2>
 <div style="float: left; width: 100%;">
-  <% @shared.each do |share| %>
+  <% @shares.each do |share| %>
     <div style="float: left; width: 150px; text-align: center; border: 1px solid #000;">
-      <% if latest_photo(share) %>
-        <% @image = image_tag latest_photo(share).photo.url(:medium)%>
+      <% if latest_photo(share.album_id) %>
+        <% @image = image_tag latest_photo(share.album_id).photo.url(:medium)%>
       <% else %>
         <% @image = image_tag '/images/default_album.gif' %>
       <% end %>
-      <p><%= link_to @image, album_path(share) %></p>
-      <p><%= get_album_name(share).name %></p>
+      <p><%= link_to @image, album_path(share.album_id) %></p>
+      <p><%= get_album_name(share.album_id).name %></p>
     </div>
   <% end %>
 </div>
+
+<div style="float: left; width: 100%;">
+<%= will_paginate @shares, :param_name => 'share_album' %>
+<div>

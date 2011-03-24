@@ -3,8 +3,7 @@ class HomeController < ApplicationController
     @albums = Album.paginate :page => params[:page], :per_page => 5, :conditions => ['enabled = ? AND user_id = ?', true, current_user.id]
     @photo = @albums
 
-    @shared = current_user.shares.map { |i| i['album_id']}
-    
+    @shares = Share.paginate :page => params[:share_album], :per_page => 5, :conditions => ['user_id = ?', current_user.id]
   end
 
   def search
