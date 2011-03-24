@@ -17,12 +17,7 @@
   </div>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
-
-  <% if @album.enabled %>
-    <%= f.hidden_field :enabled, :value => true %>
-  <% else %>
-    <%= f.hidden_field :enabled, :value => @album.enabled %>
-  <% end %>
+  <%= f.hidden_field :enabled, :value => true %>
 
   <div class="actions">
     <%= f.submit %>
