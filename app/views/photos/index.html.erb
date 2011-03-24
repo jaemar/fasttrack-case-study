@@ -1,6 +1,6 @@
 <h1>Move Photo</h1>
 <p>
-  <%= image_tag "/images/cute.jpeg" %>
+  <%= image_tag @photo.photo.url(:medium) %>
 </p>
 <% form_for(@photo, :url => update_move_photo_path) do |f| %>
   <p>
