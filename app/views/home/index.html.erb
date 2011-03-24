@@ -11,7 +11,7 @@
     <p><%= link_to @image, album_path(album.id) %></p>
     <p><%= album.name %></p>
     <p>
-    <%= 'Share' %> |
+    <%= link_to 'Share', album_shares_path(album.id) %> |
     <%= link_to 'Edit', edit_album_path(album) %> |
     <%= link_to 'Delete', delete_path(album.id), :method => :get %>
     </p>

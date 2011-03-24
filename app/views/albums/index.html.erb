@@ -10,7 +10,7 @@
   </tr>
 
 <% @albums.each do |album| %>
-  <% if album.enabled %>
+  <% if album.enabled && album.user_id == current_user.id%>
   <tr>
     <td><%= album.name %></td>
     <td><%= album.enabled %></td>
