@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20110324091152) do
   create_table "albums", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.boolean  "enabled"
+    t.boolean  "enabled",    :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

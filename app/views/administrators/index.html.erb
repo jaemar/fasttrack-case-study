@@ -5,50 +5,67 @@
     <td colspan="4">LIST OF USERS</td>
   </tr>
   <tr>
-    <th>ID</th>
-    <th>Username</th>
-    <th>Email Address</th>
-    <th>Created</th>
+    <td>ID</td>
+    <td>Username</td>
+    <td>Email Address</td>
+    <td>Created</td>
   </tr>
   <%= render :partial => 'all_users', :collection => @users %>
-</table>
 
-<table>
   <tr>
     <td colspan="4">LIST OF ALBUMS</td>
   </tr>
   <tr>
-    <th>ID</th>
-    <th>Album Owner</th>
-    <th>Album Name</th>
-    <th>Created</th>
+    <td>ID</td>
+    <td>Album Owner</td>
+    <td>Album Name</td>
+    <td>Created</td>
   </tr>
   <%= render :partial => 'all_albums', :collection => @albums %>
-</table>
 
-<table>
   <tr>
     <td colspan="4">LIST OF USERS WHO REGISTERED TODAY</td>
   </tr>
   <tr>
-    <th>ID</th>
-    <th>Username</th>
-    <th>Email Address</th>
-    <th>Created</th>
+    <td>ID</td>
+    <td>Username</td>
+    <td>Email Address</td>
+    <td>Created</td>
   </tr>
   <%= render :partial => 'all_users', :collection => @registered_users_today %>
-</table>
 
-<table>
   <tr>
     <td colspan="4">LIST OF PHOTOS UPLOADED TODAY</td>
   </tr>
   <tr>
-    <th>ID</th>
-    <th>Photo</th>
-    <th>From User</th>
-    <th>From Album</th>
-    <th>Uploaded</th>
+    <td>ID</td>
+    <td>Photo</td>
+    <td>From User</td>
+    <td>From Album</td>
+    <td>Uploaded</td>
   </tr>
   <%= render :partial => 'new_photos', :collection => @uploaded_photos_today %>
+
+  <tr>
+    <td colspan="4">LIST OF PHOTOS UPLOADED TODAY</td>
+  </tr>
+  <tr>
+    <td>ID</td>
+    <td>Photo</td>
+    <td>From User</td>
+    <td>From Album</td>
+    <td>Uploaded</td>
+  </tr>
+  <%= render :partial => 'new_photos', :collection => @uploaded_photos_today %>
+
+  <tr>
+    <td colspan="4">BLOCKED HISTORY</td>
+  </tr>
+  <tr>
+    <td>ID</td>
+    <td>Username</td>
+    <td>Blocked By</td>
+    <td>Date Blocked</td>
+  </tr>
+  <%= render :partial => 'blocked_history', :collection => @blocked_users %>
 </table>
