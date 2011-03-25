@@ -1,4 +1,16 @@
-body { background-color: #fff; color: #333; }
+html 
+{
+  background-color: #eee;
+}
+body { background-color: #fff; color: #333; width: 950px; margin: 0 auto;}
+
+#container{
+  width: 950px
+  magin: 0 auto;
+  background-color: #fff;
+  display: table;
+  padding: 30px;
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -67,4 +79,12 @@ div.field, div.actions {
 .uploaded_photo {
   padding: 10px;
   height: 150px;
+}
+
+.header_text {
+  padding: 3px;
+  font-weight: bold;
+  color: #fff;
+  background: black;
+  margin-top: 17px;
 }

@@ -1,8 +1,8 @@
 <h1>Welcome Superuser</h1>
 
 <table>
-  <tr>
-    <td colspan="4">LIST OF USERS</td>
+  <tr class="subgroup">
+    <td colspan="4" class="header_text">LIST OF USERS</td>
   </tr>
   <tr>
     <td>ID</td>
@@ -12,8 +12,8 @@
   </tr>
   <%= render :partial => 'all_users', :collection => @users %>
 
-  <tr>
-    <td colspan="4">LIST OF ALBUMS</td>
+  <tr class="subgroup">
+    <td colspan="4" class="header_text">LIST OF ALBUMS</td>
   </tr>
   <tr>
     <td>ID</td>
@@ -23,8 +23,8 @@
   </tr>
   <%= render :partial => 'all_albums', :collection => @albums %>
 
-  <tr>
-    <td colspan="4">LIST OF USERS WHO REGISTERED TODAY</td>
+  <tr class="subgroup">
+    <td colspan="4" class="header_text">LIST OF USERS WHO REGISTERED TODAY</td>
   </tr>
   <tr>
     <td>ID</td>
@@ -34,8 +34,8 @@
   </tr>
   <%= render :partial => 'all_users', :collection => @registered_users_today %>
 
-  <tr>
-    <td colspan="4">LIST OF PHOTOS UPLOADED TODAY</td>
+  <tr class="subgroup">
+    <td colspan="4" class="header_text">LIST OF PHOTOS UPLOADED TODAY</td>
   </tr>
   <tr>
     <td>ID</td>
@@ -46,8 +46,8 @@
   </tr>
   <%= render :partial => 'new_photos', :collection => @uploaded_photos_today %>
 
-  <tr>
-    <td colspan="4">BLOCKED HISTORY</td>
+  <tr class="subgroup">
+    <td colspan="4" class="header_text">BLOCKED HISTORY</td>
   </tr>
   <%= render :partial => 'blocked_history', :locals => {:bh => @blocked_users} %>
 </table>
