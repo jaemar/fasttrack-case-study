@@ -65,7 +65,6 @@
     <td>ID</td>
     <td>Username</td>
     <td>Blocked By</td>
-    <td>Date Blocked</td>
   </tr>
-  <%= render :partial => 'blocked_history', :collection => @blocked_users %>
+  <%= render :partial => 'blocked_history', :locals => {:bh => @blocked_users} %>
 </table>
