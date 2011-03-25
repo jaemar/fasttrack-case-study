@@ -1,5 +1,5 @@
 <h1>Share Album </h1>
-<%= current_user.id %>
+
 <%= form_for([@album, @share], album_shares_path(:id => @album.id)) do |f| %>
 <% if @share.errors.any? %>
   <div id="error_explanation">
@@ -13,7 +13,7 @@
 <% end %>
 
   <div class="field">
-    <label>Album</label><br />
+    <strong><label>Album Title:</label></strong>
     <%= @album.name %>
   </div>
   <div class="field">

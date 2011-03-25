@@ -27,8 +27,8 @@
   </tr>
 <% @invitations_sent.each do |sent| %>
   <tr>
-    <td><%= sent.user.username %></td>
-    <td><%= sent.user.email %></td>
+    <td><%= sent.invited_user.username %></td>
+    <td><%= sent.invited_user.email %></td>
   </tr>
 <% end %>
 </table>

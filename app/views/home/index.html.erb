@@ -7,7 +7,7 @@
 <% @invitations %>
 <h2> My Album</h2>
 <% @albums.each do |album| %>
-  <div style="float: left; width: 150px; text-align: center; border: 1px solid #000;">
+  <div id="album_container">
     <% if latest_photo(album.id) %>
       <% @image = image_tag latest_photo(album.id).photo.url(:medium)%>
     <% else %>
@@ -30,7 +30,7 @@
 <h2> Shared Album</h2>
 <div style="float: left; width: 100%;">
   <% @shares.each do |share| %>
-    <div style="float: left; width: 150px; text-align: center; border: 1px solid #000;">
+    <div id="album_container">
       <% if latest_photo(share.album_id) %>
         <% @image = image_tag latest_photo(share.album_id).photo.url(:medium)%>
       <% else %>
