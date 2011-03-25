@@ -6,14 +6,17 @@ class SharesController < ApplicationController
   end
 
   def create
-    @share = Share.create(params[:share])
-    if @share.save
-      redirect_to albums_path, :notice => 'Shared successfully.'
-    else
-      render "show", :notice => 'Shared unsuccessful!'
+    unless current_user.user_id != :user_id
+    unless Share.exists?(:user_id => params[:share][:user_id], :album_id => params[:album_id])
+      @share = Share.create(:user_id => params[:share][:user_id], :album_id => params[:album_id])
+      if @share.save
+          redirect_to albums_path, :notice => 'Shared successfully.'
+      else
+        render "show", :notice => 'Shared unsuccessful!'
+      end
+    end
     end
   end
-
   def destroy
     @share = Share.find(:first, :conditions => ['user_id = ? AND album_id = ?', params[:user_id], params[:album_id]])
     @share.destroy
