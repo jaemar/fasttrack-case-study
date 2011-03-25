@@ -1,5 +1,10 @@
 <h1>Hi <%= current_user.username %>!</h1>
 
+<span> You have </span>
+<% if @invitations %>
+<%= link_to pluralize(@invitations.count, 'invitation'), invitation_list_path %>
+<% end %>
+<% @invitations %>
 <h2> My Album</h2>
 <% @albums.each do |album| %>
   <div style="float: left; width: 150px; text-align: center; border: 1px solid #000;">

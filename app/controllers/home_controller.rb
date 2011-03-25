@@ -6,6 +6,8 @@ class HomeController < ApplicationController
     @photo = @albums
 
     @shares = Share.paginate :page => params[:share_album], :per_page => 5, :conditions => ['user_id = ?', current_user.id]
+
+    @invitations = Invitation.find(:all, :conditions => ['invited_user_id = ? AND status = ?', current_user.id, Invitation::PendingStatus])
   end
 
   def search
