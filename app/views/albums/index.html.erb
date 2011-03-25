@@ -1,28 +1,25 @@
 <h1>Albums</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></td>
-  </tr>
-
 <% @albums.each do |album| %>
+  <div id="album_container">
   <% if album.enabled && album.user_id == current_user.id%>
-  <tr>
-    <td><%= album.name %></td>
-    <td><%= album.enabled %></td>
-    <td><%= link_to 'Show', album %></td>
-    <td><%= link_to 'Edit', edit_album_path(album) %></td>
-    <td><%= link_to 'Destroy', delete_path(album.id), :method => :get %></td>
-    <td><%= link_to 'Share', album_shares_path(album.id) %></td>
-  </tr>
+    <% if latest_photo(album.id) %>
+      <% @image = image_tag latest_photo(album.id).photo.url(:medium)%>
+    <% else %>
+      <% @image = image_tag '/images/default_album.gif' %>
+    <% end %>
+    <p><%= link_to @image, album_path(album.id) %></p>
+    <p><%= album.name %></p>
+    <p>
+    <%= link_to 'Share', album_shares_path(album.id) %> |
+    <%= link_to 'Edit', edit_album_path(album) %> |
+    <%= link_to 'Delete', delete_path(album.id), :method => :get %>
+    </p>
   <% end %>
+  </div>
 <% end %>
-</table>
+
+<%= will_paginate @albums %>
 
 <br />
 

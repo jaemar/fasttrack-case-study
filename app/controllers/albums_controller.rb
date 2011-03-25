@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @albums = Album.all
+    @albums = Album.paginate :page => params[:page], :per_page => 5, :conditions => ['enabled = ? AND user_id = ?', true, current_user.id]
 
     respond_to do |format|
       format.html # index.html.erb
