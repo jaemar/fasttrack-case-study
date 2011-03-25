@@ -24,4 +24,5 @@ FasttrackCaseStudy::Application.routes.draw do
   match "invitations/:id" => "invitations#invite", :via => :post, :as => "invite"
 
   match "admin" => "administrators#index", :via => :get
+  match "admin/:id/blocked_user" => "administrators#show", :via => :get, :as => 'blocked_user'
 end

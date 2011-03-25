@@ -1,6 +1,6 @@
 <tr>
   <td><%= blocked_history.user_id %></td>
-  <td><%= blocked_history.user.username %></td>
+  <td><%= link_to blocked_history.user.username, blocked_user_path(:id => blocked_history.user_id), :method => :get %></td>
   <td><%= blocked_history.invited_user.username %></td>
-  <td><%= blocked_history.updated_at %></td>
+  <td><%= change_datetime_to_date(blocked_history.updated_at) %></td>
 </tr>

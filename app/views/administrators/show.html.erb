@@ -1,0 +1,5 @@
+<h1>Block History for <%= @user.username %></h1>
+
+<table>
+<%= render :partial=> 'block_list', :collection => @blocked_user %>
+</table>
