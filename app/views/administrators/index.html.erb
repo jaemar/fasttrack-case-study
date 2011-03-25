@@ -47,18 +47,6 @@
   <%= render :partial => 'new_photos', :collection => @uploaded_photos_today %>
 
   <tr>
-    <td colspan="4">LIST OF PHOTOS UPLOADED TODAY</td>
-  </tr>
-  <tr>
-    <td>ID</td>
-    <td>Photo</td>
-    <td>From User</td>
-    <td>From Album</td>
-    <td>Uploaded</td>
-  </tr>
-  <%= render :partial => 'new_photos', :collection => @uploaded_photos_today %>
-
-  <tr>
     <td colspan="4">BLOCKED HISTORY</td>
   </tr>
   <%= render :partial => 'blocked_history', :locals => {:bh => @blocked_users} %>
