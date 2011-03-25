@@ -14,9 +14,11 @@
     <p class="alert"><%= alert %></p>
 
     <p>
-      <%= link_to 'Home', root_path %> |
-      <%= link_to 'My Album', albums_path %> |
-      <%= link_to 'Logout', destroy_user_session_path %>
+      <% if current_user %>
+        <%= link_to 'Home', root_path %> |
+        <%= link_to 'My Album', albums_path %> |
+        <%= link_to 'Logout', destroy_user_session_path %>
+        <% end %>
     </p>
 
     <%= form_tag(search_path, {:method => :get} ) do %>
