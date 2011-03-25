@@ -1,6 +1,5 @@
 class SharesController < ApplicationController
   before_filter :authenticate_user!
-  
 
   def show
     @share = Share.new
@@ -9,8 +8,8 @@ class SharesController < ApplicationController
 
   def create
     if current_user.id != :user_id
-      if User.exists?(:id => params[:share][:user_id])
-        unless Share.exists?(:user_id => params[:share][:user_id], :album_id => params[:album_id]) 
+        unless Share.exists?(:user_id => params[:share][:user_id], :album_id => params[:album_id]) &&
+          !User.exists?(:id => params[:share][:user_id])
           @share = Share.create(:user_id => params[:share][:user_id], :album_id => params[:album_id])
           if @share.save
             redirect_to albums_path, :notice => 'Shared successfully.'
@@ -18,11 +17,8 @@ class SharesController < ApplicationController
             render "show", :notice => 'Shared unsuccessful!'
           end
         else
-          redirect_to albums_path, :notice => 'Already shared this album'
+          redirect_to albums_path, :notice => 'Shared unsuccessful!'
         end
-      else
-        redirect_to albums_path, :notice => 'User does not exist.'
-      end
     else
     redirect_to albums_path, :notice => 'Prohibited sharing album to self!'
     end
