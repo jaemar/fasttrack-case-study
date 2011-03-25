@@ -5,7 +5,7 @@
 <% form_for(@photo, :url => update_move_photo_path) do |f| %>
   <p>
     <%= f.label :album_id, "Move photo to" %>
-    <%= f.collection_select :album_id, Album.all, :id, :name, :prompt => "Please select album" %>
+    <%= f.collection_select :album_id, Album.where("user_id = ?", current_user.id), :id, :name %>
   </p>
   <p>
     <%= f.submit "Move" %>

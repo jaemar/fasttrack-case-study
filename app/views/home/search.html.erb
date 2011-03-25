@@ -3,13 +3,23 @@
   <tr>
     <th>Name</th>
     <th>Email</th>
+    <th>Status</th>
   </tr>
 
 <% @user.each do |user| %>
-  <tr>
-    <td><%= user.username %></td>
-    <td><%= user.email %></td>
-  </tr>
+  <% if user.id != current_user.id %>
+    <tr>
+      <td><%= user.username %></td>
+      <td><%= user.email %></td>
+      <% @invitations.each do |invite| %>
+        <% if invite.invited_user_id == user.id %>
+          <td><span style="font-style: italic"><%= invite.check_status() %></span></td>
+        <% else %>
+          <td><%= link_to "Invite", invite_path(user.id), :method => :post %></td>
+        <% end %>
+      <% end %>
+    </tr>
+  <% end %>
 <% end %>
 </table>
 <p><%= link_to('back', root_path) %></p>
