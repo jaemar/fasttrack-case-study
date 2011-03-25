@@ -4,10 +4,11 @@
     <tr>
       <td colspan="3">Blocked users for <%= change_datetime_to_date(b.updated_at) %></td>
     </tr>
+
     <tr>
       <td>ID</td>
       <td>Username</td>
-      <td>Blocked By</td>
+      <td>Block Count</td>
     </tr>
     <% date = change_datetime_to_date(b.updated_at) %>
   <% end %>
@@ -15,6 +16,7 @@
   <tr>
     <td><%= b.user_id %></td>
     <td><%= b.user.username %></td>
-    <td><%= b.invited_user.username %></td>
-  </tr>
+    <td><%= get_block_count(b.user_id, b.updated_at) %></td>
+    </tr>
+
 <% end %>
