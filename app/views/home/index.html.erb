@@ -18,7 +18,7 @@
     <p>
     <%= link_to 'Share', album_shares_path(album.id) %> |
     <%= link_to 'Edit', edit_album_path(album) %> |
-    <%= link_to 'Delete', delete_path(album.id), :method => :get %>
+    <%= link_to 'Delete', delete_path(album.id), :confirm => "Are you sure?", :method => :get %>
     </p>
   </div>
 <% end %>
