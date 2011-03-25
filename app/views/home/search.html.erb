@@ -11,13 +11,13 @@
     <tr>
       <td><%= user.username %></td>
       <td><%= user.email %></td>
-      <% @invitations.each do |invite| %>
-        <% if invite.invited_user_id == user.id %>
-          <td><span style="font-style: italic"><%= invite.check_status() %></span></td>
-        <% else %>
-          <td><%= link_to "Invite", invite_path(user.id), :method => :post %></td>
-        <% end %>
+      <% @check_status = check_status(current_user.id, user.id) %>
+      <% if @check_status %>
+        <td><span style="font-style: italic"><%= @check_status.check_status() %></span></td>
+      <% else %>
+        <td><%= link_to "Invite", invite_path(user.id), :method => :post %></td>
       <% end %>
+      <td><%= link_to "Invite", invite_path(user.id), :method => :post %></td>
     </tr>
   <% end %>
 <% end %>

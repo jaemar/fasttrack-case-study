@@ -7,6 +7,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></td>
   </tr>
 
 <% @albums.each do |album| %>
@@ -17,6 +18,7 @@
     <td><%= link_to 'Show', album %></td>
     <td><%= link_to 'Edit', edit_album_path(album) %></td>
     <td><%= link_to 'Destroy', delete_path(album.id), :method => :get %></td>
+    <td><%= link_to 'Share', album_shares_path(album.id) %></td>
   </tr>
   <% end %>
 <% end %>

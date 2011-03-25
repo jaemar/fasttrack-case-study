@@ -1,6 +1,5 @@
 class SharesController < ApplicationController
   before_filter :authenticate_user!
-  
 
   def show
     @share = Share.new
@@ -8,25 +7,26 @@ class SharesController < ApplicationController
   end
 
   def create
-    if current_user.id != :user_id
-      if User.exists?(:id => params[:share][:user_id])
-        unless Share.exists?(:user_id => params[:share][:user_id], :album_id => params[:album_id]) 
-          @share = Share.create(:user_id => params[:share][:user_id], :album_id => params[:album_id])
+    @share = Share.new(:user_id => params[:share][:user_id], :album_id => params[:album_id])
+    @album = Album.find(params[:album_id])
+    if current_user.id != params[:share][:user_id].to_i
+      unless !User.exists?(:id => params[:share][:user_id])
+        if !Share.exists?(:user_id => params[:share][:user_id], :album_id => params[:album_id]) 
           if @share.save
             redirect_to albums_path, :notice => 'Shared successfully.'
-          else
-            render "show", :notice => 'Shared unsuccessful!'
           end
         else
-          redirect_to albums_path, :notice => 'Already shared this album'
+          redirect_to albums_path, :notice => "You are already sharing this album to ID = ".concat(params[:share][:user_id])
         end
       else
-        redirect_to albums_path, :notice => 'User does not exist.'
+        redirect_to albums_path, :notice => "User ID don't exist!"
       end
     else
-    redirect_to albums_path, :notice => 'Prohibited sharing album to self!'
+      redirect_to albums_path, :notice => 'Prohibited sharing album to self!'
     end
+
   end
+
   def destroy
     @share = Share.find(:first, :conditions => ['user_id = ? AND album_id = ?', params[:user_id], params[:album_id]])
     @share.destroy

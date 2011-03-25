@@ -1,0 +1,34 @@
+<h2> Received Invitation </h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @invitations_receive.each do |receive| %>
+  <tr>
+    <td><%= receive.user.username %></td>
+    <td><%= receive.user.email %></td>
+    <td><%= link_to 'Accept', invitation_accept_path(receive.user_id), :method => :put %></td>
+    <td><%= link_to 'Reject', invitation_reject_path(receive.user_id), :method => :put %></td>
+    <td><%= link_to 'Block', invitation_block_path(receive.user_id), :method => :put %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<h2> Pending Invitation </h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+  </tr>
+<% @invitations_sent.each do |sent| %>
+  <tr>
+    <td><%= sent.user.username %></td>
+    <td><%= sent.user.email %></td>
+  </tr>
+<% end %>
+</table>
