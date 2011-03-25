@@ -22,5 +22,16 @@ end
 task :copy_production_database_configuration do
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 end
+
 after "deploy:update_code", :copy_production_database_configuration
+after "deploy:setup", :setup_pictures_folder 
+after "deploy:symlink", :create_symlink_to_pictures_folder 
+
+task :setup_pictures_folder do
+  run "cd #{shared_path}; mkdir pictures"
+end
+
+task :create_symlink_to_pictures_folder do
+  run "cd #{current_path}/public; rm -rf system; ln -s #{shared_path}/pictures system"
+end
 
